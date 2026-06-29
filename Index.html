@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>Chiến dịch 4 tháng | Giảm mỡ - Vai rộng - Ngực nở</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0e14;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      min-height: 100vh;
+      color: #d1d5db;
+    }
+
+    .container {
+      max-width: 850px;
+      width: 100%;
+      background: #13171f;
+      border-radius: 32px;
+      padding: 30px 24px 34px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      border: 1px solid #2a303c;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      text-align: center;
+      background: linear-gradient(135deg, #fb923c, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 28px;
+      font-size: 1rem;
+      font-weight: 500;
+      border-bottom: 1px dashed #374151;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #1a1e27;
+      border-radius: 22px;
+      padding: 22px 20px;
+      margin-bottom: 24px;
+      border: 1px solid #2d3340;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f59e0b;
+      letter-spacing: 0.3px;
+      border-left: 6px solid #f97316;
+      padding-left: 16px;
+    }
+
+    .goal-highlight {
+      background: #1f241a;
+      border-left: 5px solid #f97316;
+      padding: 16px 18px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: #fcd34d;
+      line-height: 1.5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 12px 8px;
+      background: #262d38;
+      color: #fbbf24;
+      font-weight: 600;
+      border-radius: 10px 10px 0 0;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #2f3744;
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .meal-table td:first-child {
+      font-weight: 700;
+      color: #fb923c;
+      white-space: nowrap;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      text-align: center;
+    }
+
+    .schedule-table td:first-child {
+      font-weight: 700;
+      color: #f59e0b;
+    }
+
+    .exercise-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exercise-list li {
+      background: #222835;
+      margin-bottom: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+      border: 1px solid #343b4a;
+    }
+
+    .exercise-list li strong {
+      color: #f97316;
+      font-size: 1rem;
+      min-width: 150px;
+    }
+
+    .exercise-list li .detail {
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .badge {
+      background: #dc2626;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 6px;
+    }
+
+    .rules {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rule-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #222835;
+      padding: 10px 14px;
+      border-radius: 12px;
+    }
+
+    .rule-item span {
+      font-size: 1.5rem;
+    }
+
+    .print-btn {
+      background: #f97316;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto 0;
+      letter-spacing: 0.8px;
+      box-shadow: 0 8px 18px rgba(249, 115, 22, 0.3);
+      transition: background 0.2s, transform 0.1s;
+      border: 1px solid #fb923c;
+    }
+
+    .print-btn:hover {
+      background: #ea580c;
+      transform: scale(1.02);
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        background: white;
+        color: black;
+      }
+      .card {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        box-shadow: none;
+      }
+      .print-btn {
+        display: none;
+      }
+      h1 {
+        color: #c2410c;
+        -webkit-text-fill-color: #c2410c;
+        background: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 18px 14px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      td, th {
+        font-size: 0.8rem;
+        padding: 8px 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CHIẾN DỊCH 4 THÁNG</h1>
+    <div class="subtitle">
+      <span>🔥 THÂM HỤT CALO</span>
+      <span>💪 GIỮ CƠ - ĐỐT MỠ</span>
+      <span>👕 VAI RỘNG - NGỰC NỞ</span>
+    </div>
+
+    <!-- MỤC TIÊU + THÂM HỤT CALO -->
+    <div class="goal-highlight">
+      🎯 <strong>Mục tiêu thực tế:</strong> Giảm mỡ nhờ thâm hụt calo + tập kháng lực toàn diện. Cân nặng về <strong>85-90kg</strong> nhưng body săn chắc: vai rộng, ngực đầy, bụng phẳng, đùi thon. Mặc đồ đẹp, không chảy xệ.
+      <br>⚡ <strong>Thâm hụt calo:</strong> Chế độ ăn ~1800-1900 calo/ngày, thấp hơn mức tiêu hao ~3000 calo → cơ thể buộc lấy mỡ dự trữ để đốt.
+    </div>
+
+    <!-- CHẾ ĐỘ ĂN -->
+    <div class="card">
+      <h2>🍽️ Chế độ ăn (Thâm hụt calo)</h2>
+      <table class="meal-table">
+        <thead> <tr><th>Bữa</th><th>Thực đơn</th></tr> </thead>
+        <tbody>
+          <tr><td>Sáng (7:00)</td><td>150g cơm gạo lứt + 150-200g ức gà + rau xanh</td></tr>
+          <tr><td>Trưa (12:00)</td><td>250g ức gà / bò thăn + rau xanh + 10 hạt hạnh nhân</td></tr>
+          <tr><td>Phụ (16:00)</td><td>150g khoai lang + 150g cá hồi / ức gà</td></tr>
+          <tr><td>Tối (20:00)</td><td>200g ức gà / cá + rau xanh <span class="badge">KHÔNG TINH BỘT</span></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 14px; color: #fbbf24; font-weight: 500; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        💧 4-5 lít nước/ngày • 🚫 Cấm đường, đồ chiên, nước ngọt
+      </div>
+    </div>
+
+    <!-- LỊCH TẬP -->
+    <div class="card">
+      <h2>📅 Lịch tập hàng tuần</h2>
+      <table class="schedule-table">
+        <thead> <tr><th>Ngày</th><th>Sáng (6:00)</th><th>Chiều (17:00)</th></tr> </thead>
+        <tbody>
+          <tr><td>T2</td><td>Đạp xe nhẹ 20-30p</td><td><strong>BUỔI A – KHÁNG LỰC TOÀN THÂN</strong></td></tr>
+          <tr><td>T3</td><td>Đạp xe nhẹ 20-30p</td><td><strong>BUỔI B – CARDIO ĐỐT MỠ</strong></td></tr>
+          <tr><td>T4</td><td>Nghỉ hoặc đạp xe nhẹ</td><td><strong>BUỔI A – KHÁNG LỰC</strong></td></tr>
+          <tr><td>T5</td><td>Đạp xe nhẹ 20-30p</td><td><strong>BUỔI B – CARDIO</strong></td></tr>
+          <tr><td>T6</td><td>Đạp xe nhẹ 20-30p</td><td><strong>BUỔI A – KHÁNG LỰC</strong></td></tr>
+          <tr><td>T7</td><td>Đạp xe nhẹ 20-30p</td><td><strong>BUỔI B – CARDIO</strong></td></tr>
+          <tr><td>CN</td><td colspan="2" style="color: #ef4444; font-weight: 700;">NGHỈ HOÀN TOÀN</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BUỔI A ĐIỀU CHỈNH -->
+    <div class="card">
+      <h2>💪 Buổi A – Kháng lực toàn thân (Vai, Ngực, Lưng, Đùi)</h2>
+      <ul class="exercise-list">
+        <li><strong>1. Gánh thanh lò xo Squat & Lắc</strong> <span class="detail">4 hiệp x 15 – Đùi, mông săn chắc</span></li>
+        <li><strong>2. Chống đẩy (Push-up)</strong> <span class="detail">4 hiệp, làm tới mỏi – Ngực nở, vai trước, tay sau</span></li>
+        <li><strong>3. Kéo tạ người cúi (Row)</strong> <span class="detail">4 hiệp x 12-15 – Lưng dày, vai sau rộng</span></li>
+        <li><strong>4. Đẩy vai thẳng (Overhead Press)</strong> <span class="detail">4 hiệp x 12 – Vai tròn, rộng ngang</span></li>
+        <li><strong>5. Hip Thrust với thanh lò xo</strong> <span class="detail">4 hiệp x 15 – Mông cong, không xệ</span></li>
+        <li><strong>6. Đập thanh lò xo luân phiên</strong> <span class="detail">4 hiệp (30s tập / 30s nghỉ) – Vai, ngực, bụng, tim mạch</span></li>
+        <li><strong>7. Plank</strong> <span class="detail">3 hiệp, giữ tới run – Bụng cứng, lõi khỏe</span></li>
+      </ul>
+      <div style="margin-top: 12px; font-size: 0.85rem; color: #9ca3af;">⏱️ Nghỉ 90 giây giữa hiệp, 2 phút giữa bài. Dùng chai nước/balo làm tạ nếu cần.</div>
+    </div>
+
+    <!-- BUỔI B -->
+    <div class="card">
+      <h2>🔥 Buổi B – Cardio đốt mỡ (50 phút)</h2>
+      <div style="margin-bottom: 14px;">
+        <strong style="color:#f59e0b;">1. HIIT với thanh lò xo (20 phút)</strong>
+        <ul class="exercise-list" style="margin-top: 6px;">
+          <li><span class="detail">🔄 Chạy nâng cao gối + Lắc thanh</span></li>
+          <li><span class="detail">🔨 Đập thanh luân phiên</span></li>
+          <li><span class="detail">↔️ Lắc thanh trước ngực</span></li>
+        </ul>
+        <p style="color: #cbd5e1; margin-left: 14px; font-size: 0.9rem;">Mỗi bài 30s tập hết sức – 30s nghỉ. Lặp vòng 4 lần.</p>
+      </div>
+      <div>
+        <strong style="color:#f59e0b;">2. Đi bộ dốc (30 phút)</strong>
+        <p style="color: #cbd5e1; margin-top: 4px;">Máy Kingsport: <span style="color:white;font-weight:600;">Tốc độ 5-5.5 km/h, Dốc 15</span>. Tuyệt đối không vịn tay, không chạy.</p>
+      </div>
+    </div>
+
+    <!-- NGUYÊN TẮC SỐNG CÒN -->
+    <div class="card">
+      <h2>⚠️ Nguyên tắc sống còn</h2>
+      <div class="rules">
+        <div class="rule-item"><span>🚫</span> Không nhảy dây, không chạy bộ – giữ gối an toàn.</div>
+        <div class="rule-item"><span>😴</span> Ngủ đủ 7-8 tiếng – thiếu ngủ mất cơ, khó giảm mỡ.</div>
+        <div class="rule-item"><span>📈</span> Chống đẩy yếu: Tường → Bàn/Ghế → Hạ người chậm → Sàn.</div>
+        <div class="rule-item"><span>🏋️</span> Kỹ thuật đúng > tạ nặng. Cảm nhận cơ khi tập.</div>
+        <div class="rule-item"><span>📋</span> In tờ này, dán lên tường, đánh dấu mỗi ngày hoàn thành.</div>
+      </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ In ra dán tường</button>
+    <div style="text-align: center; margin-top: 16px; color: #6b7280; font-size: 0.85rem;">
+      Bắt đầu hôm nay • 4 tháng nữa em sẽ có body vai rộng, ngực nở, không còn tự ti.
+    </div>
+  </div>
+</body>
+</html>
