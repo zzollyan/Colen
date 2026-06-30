@@ -1,432 +1,1236 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-  <title>CHIẾN DỊCH 4 THÁNG | 103kg - Siết cơ - Giảm mỡ</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiến Dịch Giảm Mỡ 4 Tháng</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Oswald:wght@400;600;700&display=swap');
 
-    body {
-      background: linear-gradient(145deg, #060a10 0%, #0d131d 100%);
-      font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 22px 14px;
-      min-height: 100vh;
-      color: #e0e5f0;
-    }
+  :root {
+    --bg: #0d0f14;
+    --surface: #161a22;
+    --surface2: #1e2330;
+    --border: #2a3044;
+    --accent: #f97316;
+    --accent2: #fb923c;
+    --green: #22c55e;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --yellow: #eab308;
+    --text: #e8eaf0;
+    --muted: #7a8399;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
 
-    .container {
-      max-width: 1000px;
-      width: 100%;
-      background: rgba(11, 16, 24, 0.92);
-      backdrop-filter: blur(18px);
-      border-radius: 44px;
-      padding: 36px 30px 44px;
-      box-shadow: 0 32px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.06);
-      border: 1px solid #293244;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    h1 {
-      font-size: clamp(2.4rem, 8vw, 3.5rem);
-      font-weight: 800;
-      text-align: center;
-      background: linear-gradient(to right, #f97316, #e11d48);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+  }
 
-    .subtitle {
-      display: flex;
-      justify-content: center;
-      gap: 12px 22px;
-      flex-wrap: wrap;
-      color: #b0bacc;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 28px;
-      border-bottom: 1px dashed #384152;
-      padding-bottom: 20px;
-    }
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 16px;
+    overflow-x: auto;
+  }
+  nav button {
+    background: none; border: none; color: var(--muted);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px; font-weight: 600;
+    padding: 14px 16px;
+    cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+  }
+  nav button.active { color: var(--accent); border-bottom-color: var(--accent); }
+  nav button:hover:not(.active) { color: var(--text); }
 
-    .subtitle span {
-      background: #1b2332;
-      padding: 6px 18px;
-      border-radius: 30px;
-      letter-spacing: 0.3px;
-    }
+  /* PAGES */
+  .page { display: none; padding: 20px 16px 80px; max-width: 900px; margin: 0 auto; }
+  .page.active { display: block; }
 
-    .grid-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a1200 0%, #2d1a00 50%, #0d0f14 100%);
+    border: 1px solid #3d2800;
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '💪';
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    font-size: 64px; opacity: .15;
+  }
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  .hero p { color: var(--muted); margin-top: 6px; font-size: 13px; }
+  .progress-bar-wrap {
+    margin-top: 18px;
+    background: var(--surface2);
+    border-radius: 99px; height: 10px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--yellow));
+    border-radius: 99px;
+    transition: width .6s ease;
+  }
+  .progress-labels {
+    display: flex; justify-content: space-between;
+    margin-top: 6px; font-size: 11px; color: var(--muted);
+  }
 
-    @media (max-width: 750px) {
-      .grid-2col {
-        grid-template-columns: 1fr;
-      }
-    }
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .stat-card .val {
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px; font-weight: 700;
+    line-height: 1;
+  }
+  .stat-card .lbl { font-size: 10px; color: var(--muted); margin-top: 4px; }
 
-    .card {
-      background: #161d2a;
-      border-radius: 26px;
-      padding: 24px 22px;
-      border: 1px solid #2d384b;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      height: fit-content;
-    }
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: .5px;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
 
-    .card:hover {
-      border-color: #f97316;
-      box-shadow: 0 12px 28px rgba(249, 115, 22, 0.15);
-    }
+  /* WEIGHT LOG */
+  .weight-input-row {
+    display: flex; gap: 8px; margin-bottom: 14px;
+  }
+  .weight-input-row input {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+  }
+  .weight-input-row input:focus { outline: none; border-color: var(--accent); }
+  .btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 600; font-size: 13px;
+    cursor: pointer;
+    transition: background .2s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--accent2); }
+  .btn.danger { background: var(--red); }
+  .btn.success { background: var(--green); }
+  .btn.ghost {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
 
-    .card h2 {
-      font-size: 1.45rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fbbf24;
-      border-left: 6px solid #f97316;
-      padding-left: 16px;
-      letter-spacing: 0.3px;
-    }
+  /* WEIGHT LIST */
+  .weight-list { display: flex; flex-direction: column; gap: 8px; }
+  .weight-item {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .weight-item .diff { font-weight: 700; }
+  .diff.neg { color: var(--green); }
+  .diff.pos { color: var(--red); }
 
-    .goal-highlight {
-      background: linear-gradient(120deg, #1e1b14, #262119);
-      border-left: 6px solid #f97316;
-      padding: 18px 20px;
-      border-radius: 18px;
-      margin-bottom: 26px;
-      font-weight: 500;
-      color: #fcd34d;
-      line-height: 1.6;
-      font-size: 0.98rem;
-    }
+  /* MINI CHART */
+  canvas#weightChart {
+    width: 100%; border-radius: 8px;
+    background: var(--surface2);
+  }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.92rem;
-    }
+  /* CHECKLIST */
+  .day-tabs {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;
+  }
+  .day-tab {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; color: var(--muted);
+    transition: all .2s;
+  }
+  .day-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .day-tab.done { background: #14532d; border-color: var(--green); color: var(--green); }
 
-    th {
-      text-align: left;
-      padding: 12px 8px;
-      background: #222b3a;
-      color: #fbbf24;
-      font-weight: 600;
-      border-radius: 10px 10px 0 0;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
+  .checklist { display: flex; flex-direction: column; gap: 8px; }
+  .check-item {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all .2s;
+    user-select: none;
+  }
+  .check-item.checked {
+    border-color: var(--green);
+    background: rgba(34,197,94,0.08);
+  }
+  .check-item .box {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+  }
+  .check-item.checked .box {
+    background: var(--green); border-color: var(--green);
+  }
+  .check-item .box svg { display: none; }
+  .check-item.checked .box svg { display: block; }
+  .check-item .label { font-size: 13px; line-height: 1.4; }
+  .check-item.checked .label { text-decoration: line-through; color: var(--muted); }
 
-    td {
-      padding: 12px 8px;
-      border-bottom: 1px solid #2d3648;
-      vertical-align: middle;
-    }
+  .section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    color: var(--muted); text-transform: uppercase;
+    margin: 14px 0 8px;
+  }
 
-    tr:last-child td {
-      border-bottom: none;
-    }
+  /* MEAL TABLE */
+  .meal-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .meal-table th {
+    background: var(--surface2);
+    color: var(--muted);
+    font-weight: 600; text-align: left;
+    padding: 8px 10px;
+    font-size: 11px; letter-spacing: .5px;
+  }
+  .meal-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .meal-table tr:last-child td { border-bottom: none; }
+  .meal-table tr:hover td { background: rgba(255,255,255,.02); }
+  .time-badge {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-weight: 700; font-size: 11px;
+    white-space: nowrap;
+  }
 
-    .meal-table td:first-child {
-      font-weight: 700;
-      color: #fb923c;
-      white-space: nowrap;
-    }
+  /* WORKOUT TABLE */
+  .workout-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .workout-table th {
+    background: var(--surface2);
+    color: var(--muted);
+    font-weight: 600; text-align: left;
+    padding: 8px 10px; font-size: 11px;
+  }
+  .workout-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .workout-table tr:last-child td { border-bottom: none; }
+  .set-badge {
+    background: #1e2330;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 11px; font-weight: 600;
+    color: var(--accent);
+  }
 
-    .schedule-table th,
-    .schedule-table td {
-      text-align: center;
-    }
+  /* WEEKLY GRID */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .week-cell {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .week-cell .day-name { font-size: 10px; color: var(--muted); font-weight: 600; }
+  .week-cell .session { font-size: 9px; margin-top: 4px; line-height: 1.4; }
+  .tag {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 9px; font-weight: 700;
+  }
+  .tag.walk { background: #1c3a5e; color: #60a5fa; }
+  .tag.resist { background: #3d1a00; color: var(--accent); }
+  .tag.cardio { background: #14532d; color: #4ade80; }
+  .tag.rest { background: #1e1e1e; color: var(--muted); }
 
-    .schedule-table td:first-child {
-      font-weight: 700;
-      color: #f59e0b;
-    }
+  /* WATER TRACKER */
+  .water-row {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+  }
+  .water-cup {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    background: var(--surface2);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; transition: all .2s;
+  }
+  .water-cup.filled {
+    background: #1c3a5e;
+    border-color: #60a5fa;
+  }
+  .water-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
-    .exercise-list {
-      list-style: none;
-      padding: 0;
-    }
+  /* SUPPLEMENT */
+  .supp-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .supp-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 7px 16px;
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; color: var(--muted);
+    transition: all .2s;
+  }
+  .supp-pill.taken {
+    background: #14532d;
+    border-color: var(--green);
+    color: var(--green);
+  }
 
-    .exercise-list li {
-      background: #1c2534;
-      margin-bottom: 10px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 8px;
-      border: 1px solid #313d52;
-      transition: background 0.2s;
-    }
+  /* MOTIVATION */
+  .quote-box {
+    background: linear-gradient(135deg, #1a1200, #2d1a00);
+    border: 1px solid #3d2800;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+  .quote-box .q {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: var(--accent);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .quote-box .author { font-size: 12px; color: var(--muted); }
 
-    .exercise-list li:hover {
-      background: #233044;
-    }
+  .rule-list { display: flex; flex-direction: column; gap: 8px; }
+  .rule-item {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .rule-item .icon { font-size: 16px; flex-shrink: 0; }
+  .rule-item.bad { border-left: 3px solid var(--red); }
+  .rule-item.good { border-left: 3px solid var(--green); }
 
-    .exercise-list li strong {
-      color: #f97316;
-      font-size: 0.98rem;
-      min-width: 150px;
-    }
+  /* NOTES */
+  textarea.notes-area {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 100px;
+  }
+  textarea.notes-area:focus { outline: none; border-color: var(--accent); }
 
-    .exercise-list li .detail {
-      color: #cbd5e1;
-      font-weight: 500;
-      flex: 1;
-    }
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 16px 0; }
 
-    .badge {
-      background: #e11d48;
-      color: white;
-      padding: 2px 12px;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-left: 6px;
-    }
+  /* TOAST */
+  #toast {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: #fff;
+    padding: 10px 22px; border-radius: 99px;
+    font-size: 13px; font-weight: 600;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+    z-index: 999;
+  }
+  #toast.show { opacity: 1; }
 
-    .rules {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  /* RESPONSIVE */
+  @media(max-width:480px) {
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+    .hero h1 { font-size: 22px; }
+    .week-grid { grid-template-columns: repeat(7,1fr); gap:4px; }
+    .week-cell { padding: 8px 4px; }
+  }
 
-    .rule-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #1a2332;
-      padding: 12px 16px;
-      border-radius: 14px;
-      border: 1px solid #2c3850;
-    }
+  .empty-msg { color: var(--muted); font-size: 12px; text-align: center; padding: 16px 0; }
 
-    .rule-item span {
-      font-size: 1.5rem;
-    }
-
-    .print-btn {
-      background: #f97316;
-      border: none;
-      color: white;
-      font-weight: bold;
-      padding: 14px 32px;
-      border-radius: 40px;
-      font-size: 1rem;
-      cursor: pointer;
-      display: block;
-      margin: 24px auto 0;
-      letter-spacing: 0.8px;
-      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
-      transition: background 0.2s, transform 0.1s;
-      border: 1px solid #fb923c;
-    }
-
-    .print-btn:hover {
-      background: #ea580c;
-      transform: scale(1.02);
-    }
-
-    .supplement-box {
-      background: #18212d;
-      border-left: 5px solid #3b82f6;
-      border-radius: 16px;
-      padding: 14px 16px;
-      margin-bottom: 14px;
-      color: #bfdbfe;
-    }
-
-    .alternative-box {
-      background: #19212c;
-      border: 1px dashed #f59e0b;
-      border-radius: 16px;
-      padding: 14px 16px;
-      margin-top: 14px;
-      color: #fcd34d;
-      font-size: 0.9rem;
-    }
-
-    .replace-note {
-      background: #2a1f1a;
-      border-left: 5px solid #f97316;
-      padding: 10px 16px;
-      border-radius: 12px;
-      margin-bottom: 14px;
-      color: #fed7aa;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    .explain-box {
-      background: #1d2634;
-      border-left: 5px solid #fbbf24;
-      padding: 12px 16px;
-      border-radius: 12px;
-      margin-top: 12px;
-      color: #fcd34d;
-      font-size: 0.85rem;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 22px;
-      color: #6b7280;
-      font-size: 0.8rem;
-    }
-
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
-      .container {
-        backdrop-filter: none;
-        background: white;
-        box-shadow: none;
-        border: 1px solid #ccc;
-        color: black;
-      }
-      .card {
-        background: #f9f9f9;
-        border: 1px solid #ddd;
-        box-shadow: none;
-      }
-      .print-btn {
-        display: none;
-      }
-      h1 {
-        color: #c2410c;
-        -webkit-text-fill-color: #c2410c;
-        background: none;
-      }
-    }
-  </style>
+  /* STREAK */
+  .streak-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, #7c2d12, #c2410c);
+    border-radius: 99px;
+    padding: 6px 14px;
+    font-size: 13px; font-weight: 700;
+    color: #fff;
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>CHIẾN DỊCH 4 THÁNG</h1>
-    <div class="subtitle">
-      <span>🔥 103kg - Siết cơ</span>
-      <span>💪 Vai rộng - Ngực nở</span>
-      <span>🧴 Supplement</span>
-    </div>
 
-    <div class="goal-highlight">
-      🏋️ <strong>Hiện tại: 103kg</strong><br>
-      🎯 <strong>Mục tiêu sau 4 tháng:</strong> <strong>85-90kg</strong>, body săn chắc, vai rộng, ngực nở, bụng phẳng.<br>
-      ⚠️ Không ép xuống 80kg – giảm quá nhanh dễ mất cơ, da chùng.
-    </div>
+<nav>
+  <button class="active" onclick="showPage('tong-quan')">🏠 Tổng Quan</button>
+  <button onclick="showPage('hang-ngay')">✅ Hàng Ngày</button>
+  <button onclick="showPage('can-nang')">⚖️ Cân Nặng</button>
+  <button onclick="showPage('lich-tap')">🏋️ Lịch Tập</button>
+  <button onclick="showPage('dinh-duong')">🍱 Dinh Dưỡng</button>
+  <button onclick="showPage('dong-luc')">🔥 Động Lực</button>
+</nav>
 
-    <div class="grid-2col">
-      <div class="card">
-        <h2>🍽️ Chế độ ăn (9h - 13h - 16h - 18h30)</h2>
-        <table class="meal-table">
-          <thead> <tr><th>Bữa</th><th>Thực đơn</th></tr> </thead>
-          <tbody>
-            <tr><td>Sáng (9:00)</td><td>100g cơm gạo lứt + 150g ức gà/cá + bông cải luộc</td></tr>
-            <tr><td>Trưa (13:00)</td><td>150g ức gà/cá + 50-100g cơm gạo lứt + bông cải luộc + 1 quả chuối</td></tr>
-            <tr><td>Chiều (16:00)</td><td>150g ức gà/cá + ½ - 1 quả chuối <span class="badge">UỐNG L-CARNITINE</span></td></tr>
-            <tr><td>Tối (18:30)</td><td>100g ức gà/cá + bông cải luộc (không tinh bột)</td></tr>
-          </tbody>
-        </table>
-        <div style="margin-top: 14px; color: #fbbf24; font-weight: 500; font-size:0.9rem;">
-          💧 4.5 lít nước/ngày + bù khoáng khi tập<br>
-          🚫 Cấm đường, đồ chiên, nước ngọt, đồ vặt.
-        </div>
-        <div class="explain-box">
-          🌙 Bữa 18h30 là bữa phục hồi sau tập, chỉ đạm + rau, không tinh bột.
-        </div>
-      </div>
-      <div class="card">
-        <h2>🧴 Supplement</h2>
-        <div class="supplement-box">🔵 <strong>Kẽm:</strong> 1 viên sau bữa sáng.</div>
-        <div class="supplement-box">🟢 <strong>Bù khoáng:</strong> Pha nước uống trong lúc tập.</div>
-        <div class="supplement-box">🟠 <strong>L-Carnitine:</strong> 1 liều trước tập 30-45p (bữa 16h).</div>
-      </div>
+<!-- TỔNG QUAN -->
+<div class="page active" id="tong-quan">
+  <div class="hero">
+    <h1>CHIẾN DỊCH<br>GIẢM MỠ 4 THÁNG</h1>
+    <p id="hero-date">Ngày bắt đầu: —</p>
+    <div class="progress-bar-wrap" style="margin-top:14px">
+      <div class="progress-bar-fill" id="time-bar" style="width:0%"></div>
     </div>
-
-    <div class="grid-2col">
-      <div class="card">
-        <h2>📅 Lịch tập hàng tuần</h2>
-        <table class="schedule-table">
-          <thead> <tr><th>Ngày</th><th>Sáng (6:00)</th><th>Chiều (17:00)</th></tr> </thead>
-          <tbody>
-            <tr><td>T2</td><td>Đi bộ dốc 30-40p</td><td><strong>BUỔI A – KHÁNG LỰC</strong></td></tr>
-            <tr><td>T3</td><td>Đi bộ dốc 30-40p</td><td><strong>BUỔI B – CARDIO</strong></td></tr>
-            <tr><td>T4</td><td>Đi bộ dốc 30-40p</td><td><strong>BUỔI A</strong></td></tr>
-            <tr><td>T5</td><td>Đi bộ dốc 30-40p</td><td><strong>BUỔI B</strong></td></tr>
-            <tr><td>T6</td><td>Đi bộ dốc 30-40p</td><td><strong>BUỔI A</strong></td></tr>
-            <tr><td>T7</td><td>Đi bộ dốc 30-40p</td><td><strong>BUỔI B</strong></td></tr>
-            <tr><td>CN</td><td colspan="2" style="color:#ef4444; font-weight:700;">NGHỈ HOÀN TOÀN</td></tr>
-          </tbody>
-        </table>
-        <div style="margin-top:10px; color:#9ca3af; font-size:0.8rem;">
-          🌅 Sáng: Đi bộ dốc (dốc 15, tốc độ 5-5.5 km/h). Có thể dùng prop nếu chỉ đi bộ.
-        </div>
-        <div class="alternative-box">
-          🔁 <strong>Về ngoại không máy:</strong> Đi bộ nhanh 45p / leo cầu thang 25p / đạp xe 45p.
-        </div>
-      </div>
-      <div class="card">
-        <h2>💪 Buổi A – Kháng lực (45-60p)</h2>
-        <p style="margin-bottom:12px; color:#9ca3af; font-size:0.85rem;">Tập từng bài, nghỉ 90s giữa hiệp.</p>
-        <div class="replace-note">
-          🔄 <strong>Dumbbell Floor Press</strong> thay chống đẩy – an toàn, vẫn đánh ngực.
-        </div>
-        <ul class="exercise-list">
-          <li><strong>1. Goblet Squat</strong> <span class="detail">4x15 (tạ 5kg)</span></li>
-          <li><strong>2. Dumbbell Floor Press</strong> <span class="detail">4x12-15 (2 tạ 5kg)</span></li>
-          <li><strong>3. Bent-over Row</strong> <span class="detail">4x12 (2 tạ 5kg)</span></li>
-          <li><strong>4. Overhead Press</strong> <span class="detail">4x12 (2 tạ 3-5kg)</span></li>
-          <li><strong>5. Hip Thrust</strong> <span class="detail">4x15 (tạ 5kg)</span></li>
-          <li><strong>6. Đập thanh lò xo</strong> <span class="detail">4x(30s/30s)</span></li>
-          <li><strong>7. Plank</strong> <span class="detail">3x giữ đến run</span></li>
-        </ul>
-        <div class="explain-box">💡 Giáo án Full Body, bao phủ toàn bộ cơ.</div>
-      </div>
+    <div class="progress-labels">
+      <span>Bắt đầu</span>
+      <span id="time-pct">0%</span>
+      <span>4 tháng</span>
     </div>
-
-    <div class="card" style="margin-bottom:24px;">
-      <h2>🔥 Buổi B – Cardio (50-55p)</h2>
-      <p><strong>HIIT (20p):</strong> 4 bài (chạy gối + lắc, đập thanh, lắc trước ngực, Jumping Jack). 30s tập/30s nghỉ, 4 vòng.</p>
-      <p style="margin-top:8px;"><strong>Đi bộ dốc (30-35p):</strong> Dốc 15, tốc độ 5-5.5 km/h.</p>
-    </div>
-
-    <div class="card">
-      <h2>⚠️ Nguyên tắc sống còn</h2>
-      <div class="rules">
-        <div class="rule-item"><span>🚫</span> Không chạy bộ, không nhảy dây.</div>
-        <div class="rule-item"><span>😴</span> Ngủ 7-8 tiếng.</div>
-        <div class="rule-item"><span>🏋️</span> Kỹ thuật > tạ nặng.</div>
-        <div class="rule-item"><span>🖨️</span> In ra, dán tường, đánh dấu mỗi ngày.</div>
-      </div>
-    </div>
-
-    <button class="print-btn" onclick="window.print()">🖨️ In ra dán tường</button>
-    <footer>Bắt đầu hôm nay • 4 tháng nữa em sẽ khác biệt.</footer>
   </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="val" id="stat-current" style="color:var(--accent)">—</div>
+      <div class="lbl">Cân hiện tại (kg)</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-lost" style="color:var(--green)">—</div>
+      <div class="lbl">Đã giảm (kg)</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-target" style="color:var(--blue)">85–90</div>
+      <div class="lbl">Mục tiêu (kg)</div>
+    </div>
+  </div>
+
+  <div class="stats-row" style="grid-template-columns:1fr 1fr">
+    <div class="stat-card">
+      <div class="val" id="stat-streak" style="color:var(--yellow)">0</div>
+      <div class="lbl">🔥 Chuỗi ngày</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-days-left" style="color:var(--muted)">120</div>
+      <div class="lbl">Ngày còn lại</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📅 Tiến độ cân nặng</div>
+    <canvas id="weightChart" height="140"></canvas>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📌 Mục tiêu cốt lõi</div>
+    <div class="rule-list">
+      <div class="rule-item good"><span class="icon">✅</span>Giảm từ 103kg → 85–90kg trong 4 tháng</div>
+      <div class="rule-item good"><span class="icon">💪</span>Vai rộng, ngực nở, bụng phẳng, giữ cơ</div>
+      <div class="rule-item good"><span class="icon">😴</span>Ngủ đủ 7–8 tiếng mỗi đêm</div>
+      <div class="rule-item bad"><span class="icon">🚫</span>Không chạy bộ, không nhảy dây</div>
+      <div class="rule-item bad"><span class="icon">🚫</span>Không đường, không chiên, không nước ngọt</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚙️ Cài đặt chiến dịch</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <label style="font-size:12px;color:var(--muted)">Ngày bắt đầu:</label>
+      <input type="date" id="start-date-input" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'Be Vietnam Pro',sans-serif;font-size:13px;">
+      <input type="number" id="start-weight-input" placeholder="Cân ban đầu (kg)" style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-family:'Be Vietnam Pro',sans-serif;font-size:13px;width:160px;">
+      <button class="btn" onclick="saveCampaign()">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- HÀNG NGÀY -->
+<div class="page" id="hang-ngay">
+  <div class="card">
+    <div class="card-title">📅 Chọn ngày</div>
+    <div class="day-tabs" id="day-tabs"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💧 Nước uống hôm nay (4.5L)</div>
+    <div class="water-row" id="water-cups"></div>
+    <div class="water-label" id="water-label">0 / 9 ly (500ml/ly) = 0L / 4.5L</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💊 Supplement</div>
+    <div class="supp-row" id="supp-row">
+      <div class="supp-pill" onclick="toggleSupp(this,'zinc')">🟡 Kẽm (sau sáng)</div>
+      <div class="supp-pill" onclick="toggleSupp(this,'mineral')">🔵 Bù khoáng (lúc tập)</div>
+      <div class="supp-pill" onclick="toggleSupp(this,'carnitine')">🟠 L-Carnitine (16h, trước tập 30-45p)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✅ Checklist buổi sáng</div>
+    <div class="checklist" id="checklist-morning"></div>
+
+    <div class="section-label">Buổi chiều / tối</div>
+    <div class="checklist" id="checklist-afternoon"></div>
+
+    <div class="section-label">Tập luyện</div>
+    <div class="checklist" id="checklist-workout"></div>
+
+    <div class="divider"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span id="checklist-score" style="font-size:13px;color:var(--muted)">0 / 0 hoàn thành</span>
+      <button class="btn ghost" onclick="resetChecklist()" style="font-size:12px;padding:6px 12px">Reset hôm nay</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 Ghi chú hôm nay</div>
+    <textarea class="notes-area" id="daily-note" placeholder="Cảm giác hôm nay, điều cần cải thiện..." oninput="saveNote()"></textarea>
+  </div>
+</div>
+
+<!-- CÂN NẶNG -->
+<div class="page" id="can-nang">
+  <div class="card">
+    <div class="card-title">⚖️ Nhập cân nặng hôm nay</div>
+    <div class="weight-input-row">
+      <input type="number" id="weight-input" placeholder="VD: 101.5" step="0.1" min="50" max="200">
+      <button class="btn" onclick="logWeight()">Ghi lại</button>
+    </div>
+    <div style="font-size:12px;color:var(--muted)">Cân vào buổi sáng, sau khi đi vệ sinh, trước khi ăn để chính xác nhất.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📈 Biểu đồ cân nặng</div>
+    <canvas id="weightChart2" height="160"></canvas>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📋 Lịch sử cân nặng</div>
+    <div class="weight-list" id="weight-list">
+      <div class="empty-msg">Chưa có dữ liệu. Hãy nhập cân nặng đầu tiên!</div>
+    </div>
+  </div>
+</div>
+
+<!-- LỊCH TẬP -->
+<div class="page" id="lich-tap">
+  <div class="card">
+    <div class="card-title">📅 Lịch tập hàng tuần</div>
+    <div class="week-grid">
+      <div class="week-cell">
+        <div class="day-name">T2</div>
+        <div class="session">
+          <span class="tag walk">ĐI BỘ</span><br>
+          <span style="font-size:9px;color:var(--muted)">6:00 · 30-40p</span><br>
+          <span class="tag resist" style="margin-top:3px;display:inline-block">KHÁNG LỰC A</span>
+        </div>
+      </div>
+      <div class="week-cell">
+        <div class="day-name">T3</div>
+        <div class="session">
+          <span class="tag walk">ĐI BỘ</span><br>
+          <span style="font-size:9px;color:var(--muted)">6:00 · 30-40p</span><br>
+          <span class="tag cardio" style="margin-top:3px;display:inline-block">CARDIO B</span>
+        </div>
+      </div>
+      <div class="week-cell">
+        <div class="day-name">T4</div>
+        <div class="session">
+          <span class="tag walk">ĐI BỘ</span><br>
+          <span style="font-size:9px;color:var(--muted)">6:00 · 30-40p</span><br>
+          <span class="tag resist" style="margin-top:3px;display:inline-block">KHÁNG LỰC A</span>
+        </div>
+      </div>
+      <div class="week-cell">
+        <div class="day-name">T5</div>
+        <div class="session">
+          <span class="tag walk">ĐI BỘ</span><br>
+          <span style="font-size:9px;color:var(--muted)">6:00 · 30-40p</span><br>
+          <span class="tag cardio" style="margin-top:3px;display:inline-block">CARDIO B</span>
+        </div>
+      </div>
+      <div class="week-cell">
+        <div class="day-name">T6</div>
+        <div class="session">
+          <span class="tag walk">ĐI BỘ</span><br>
+          <span style="font-size:9px;color:var(--muted)">6:00 · 30-40p</span><br>
+          <span class="tag resist" style="margin-top:3px;display:inline-block">KHÁNG LỰC A</span>
+        </div>
+      </div>
+      <div class="week-cell">
+        <div class="day-name">T7</div>
+        <div class="session">
+          <span class="tag walk">ĐI BỘ</span><br>
+          <span style="font-size:9px;color:var(--muted)">6:00 · 30-40p</span><br>
+          <span class="tag cardio" style="margin-top:3px;display:inline-block">CARDIO B</span>
+        </div>
+      </div>
+      <div class="week-cell">
+        <div class="day-name">CN</div>
+        <div class="session">
+          <span class="tag rest">NGHỈ</span><br>
+          <span style="font-size:9px;color:var(--muted)">Hoàn toàn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏋️ Buổi A – Kháng Lực Toàn Thân (45-60p)</div>
+    <table class="workout-table">
+      <tr><th>#</th><th>Bài tập</th><th>Hiệp × Reps</th><th>Nhóm cơ</th></tr>
+      <tr>
+        <td style="color:var(--muted)">1</td>
+        <td><b>Goblet Squat</b><br><span style="color:var(--muted);font-size:11px">Tạ 5kg</span></td>
+        <td><span class="set-badge">4×15</span></td>
+        <td style="color:var(--muted)">Đùi, mông</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">2</td>
+        <td><b>Dumbbell Floor Press</b><br><span style="color:var(--muted);font-size:11px">2 tạ 5kg</span></td>
+        <td><span class="set-badge">4×12-15</span></td>
+        <td style="color:var(--muted)">Ngực, vai</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">3</td>
+        <td><b>Bent-over Row</b><br><span style="color:var(--muted);font-size:11px">2 tạ 5kg</span></td>
+        <td><span class="set-badge">4×12</span></td>
+        <td style="color:var(--muted)">Lưng, vai sau</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">4</td>
+        <td><b>Overhead Press</b><br><span style="color:var(--muted);font-size:11px">2 tạ 3-5kg</span></td>
+        <td><span class="set-badge">4×12</span></td>
+        <td style="color:var(--muted)">Vai rộng</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">5</td>
+        <td><b>Hip Thrust</b><br><span style="color:var(--muted);font-size:11px">Tạ 5kg đặt hông</span></td>
+        <td><span class="set-badge">4×15</span></td>
+        <td style="color:var(--muted)">Mông săn</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">6</td>
+        <td><b>Đập thanh lò xo luân phiên</b></td>
+        <td><span class="set-badge">4×30s/30s</span></td>
+        <td style="color:var(--muted)">Vai, ngực, bụng</td>
+      </tr>
+      <tr>
+        <td style="color:var(--muted)">7</td>
+        <td><b>Plank</b></td>
+        <td><span class="set-badge">3× giữ đến run</span></td>
+        <td style="color:var(--muted)">Bụng, lõi</td>
+      </tr>
+    </table>
+    <div style="margin-top:12px;padding:10px 12px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--muted)">
+      ⏱ Nghỉ 90 giây giữa hiệp · 2 phút giữa bài · Dụng cụ: Thanh lò xo, tạ 3-5kg, thảm tập
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔥 Buổi B – Cardio Đốt Mỡ (50-55p)</div>
+    <div class="section-label">HIIT với thanh lò xo – 20 phút</div>
+    <table class="workout-table">
+      <tr><th>Bài</th><th>Động tác</th><th>Thời gian</th></tr>
+      <tr><td>1</td><td>Chạy nâng cao gối + lắc thanh</td><td><span class="set-badge">30s tập / 30s nghỉ</span></td></tr>
+      <tr><td>2</td><td>Đập thanh luân phiên</td><td><span class="set-badge">30s tập / 30s nghỉ</span></td></tr>
+      <tr><td>3</td><td>Lắc thanh trước ngực</td><td><span class="set-badge">30s tập / 30s nghỉ</span></td></tr>
+      <tr><td>4</td><td>Jumping Jack (không thanh)</td><td><span class="set-badge">30s tập / 30s nghỉ</span></td></tr>
+    </table>
+    <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--muted);margin-top:8px">
+      Lặp 4 vòng · Tổng 20 phút
+    </div>
+    <div class="section-label">Đi bộ dốc – 30-35 phút</div>
+    <div style="padding:12px;background:var(--surface2);border-radius:10px;font-size:13px;line-height:1.6">
+      Máy Kingsport · Dốc <b style="color:var(--accent)">15</b> · Tốc độ <b style="color:var(--accent)">5–5.5 km/h</b><br>
+      <span style="color:var(--muted)">Không vịn · Không chạy · Có thể dùng chế độ "prop"</span><br><br>
+      <b>Ngoài trời:</b> Đi bộ nhanh 45p / Leo cầu thang 25p / Đạp xe 45p
+    </div>
+  </div>
+</div>
+
+<!-- DINH DƯỠNG -->
+<div class="page" id="dinh-duong">
+  <div class="card">
+    <div class="card-title">🍱 Thực đơn hàng ngày</div>
+    <table class="meal-table">
+      <tr>
+        <th>Giờ</th>
+        <th>Thực đơn</th>
+      </tr>
+      <tr>
+        <td><span class="time-badge">9:00</span></td>
+        <td>100g cơm gạo lứt + 150g ức gà (hoặc cá) + bông cải luộc</td>
+      </tr>
+      <tr>
+        <td><span class="time-badge">13:00</span></td>
+        <td>150g ức gà/cá + 50–100g cơm gạo lứt + bông cải luộc + 1 quả chuối</td>
+      </tr>
+      <tr>
+        <td><span class="time-badge">16:00</span></td>
+        <td>150g ức gà/cá + ½–1 quả chuối · <b style="color:var(--accent)">Uống L-Carnitine ngay lúc này</b></td>
+      </tr>
+      <tr>
+        <td><span class="time-badge">18:30</span></td>
+        <td>100g ức gà/cá + bông cải luộc · <b style="color:var(--red)">Không tinh bột, không chuối</b></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">✅ Thực phẩm được ăn</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span style="background:#14532d;color:#4ade80;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🍗 Ức gà</span>
+      <span style="background:#14532d;color:#4ade80;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🐟 Cá</span>
+      <span style="background:#14532d;color:#4ade80;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🥦 Bông cải xanh</span>
+      <span style="background:#14532d;color:#4ade80;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🌾 Gạo lứt</span>
+      <span style="background:#14532d;color:#4ade80;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🍌 Chuối</span>
+      <span style="background:#14532d;color:#4ade80;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">💧 Nước 4.5L</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚫 Tuyệt đối cấm</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span style="background:#450a0a;color:#f87171;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🍬 Đường</span>
+      <span style="background:#450a0a;color:#f87171;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🍟 Đồ chiên</span>
+      <span style="background:#450a0a;color:#f87171;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🥤 Nước ngọt</span>
+      <span style="background:#450a0a;color:#f87171;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600">🍿 Đồ vặt</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💊 Supplement</div>
+    <div class="rule-list">
+      <div class="rule-item good"><span class="icon">🟡</span><div><b>Kẽm:</b> 1 viên sau bữa sáng (9h)</div></div>
+      <div class="rule-item good"><span class="icon">🔵</span><div><b>Bù khoáng:</b> Pha nước uống trong lúc tập</div></div>
+      <div class="rule-item good"><span class="icon">🟠</span><div><b>L-Carnitine:</b> 1 liều lúc 16h, trước tập 30–45 phút</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ĐỘNG LỰC -->
+<div class="page" id="dong-luc">
+  <div class="quote-box" style="margin-bottom:14px">
+    <div class="q" id="daily-quote">"Không có thay đổi nào xảy ra trong vùng thoải mái."</div>
+    <div class="author">— Động lực hôm nay</div>
+    <button class="btn ghost" onclick="nextQuote()" style="margin-top:12px;font-size:12px">Câu tiếp theo →</button>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏆 Nguyên tắc sống còn</div>
+    <div class="rule-list">
+      <div class="rule-item bad"><span class="icon">🚫</span>Không chạy bộ, không nhảy dây</div>
+      <div class="rule-item good"><span class="icon">😴</span>Ngủ đủ 7–8 tiếng mỗi đêm</div>
+      <div class="rule-item good"><span class="icon">🎯</span>Kỹ thuật đúng hơn tạ nặng</div>
+      <div class="rule-item good"><span class="icon">📌</span>In ra, dán tường, đánh dấu mỗi ngày</div>
+      <div class="rule-item good"><span class="icon">💧</span>Uống đủ 4.5 lít nước mỗi ngày</div>
+      <div class="rule-item bad"><span class="icon">🚫</span>Không ép xuống 80kg – dễ mất cơ, da chùng</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Thống kê tổng</div>
+    <div class="stats-row" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="stat-card">
+        <div class="val" id="mot-total-days" style="color:var(--accent)">0</div>
+        <div class="lbl">Ngày đã qua</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="mot-complete-days" style="color:var(--green)">0</div>
+        <div class="lbl">Ngày hoàn thành</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="mot-rate" style="color:var(--blue)">0%</div>
+        <div class="lbl">Tỉ lệ thực hiện</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📝 Ghi chú cá nhân</div>
+    <textarea class="notes-area" id="global-note" placeholder="Mục tiêu, động lực, lời nhắc cho bản thân..." oninput="saveGlobalNote()" style="min-height:140px"></textarea>
+  </div>
+</div>
+
+<div id="toast">✓ Đã lưu!</div>
+
+<script>
+// ===== DATA =====
+const TOTAL_DAYS = 120;
+const CHECKLIST_MORNING = [
+  { id:'m1', label:'⏰ Dậy đúng giờ, không nằm nướng' },
+  { id:'m2', label:'🚶 Đi bộ dốc 30-40 phút (6:00)' },
+  { id:'m3', label:'🍚 Ăn sáng 9:00 (gạo lứt + ức gà + bông cải)' },
+  { id:'m4', label:'💊 Uống kẽm sau bữa sáng' },
+];
+const CHECKLIST_AFTERNOON = [
+  { id:'a1', label:'🍗 Ăn trưa 13:00 (gà/cá + cơm + bông cải + chuối)' },
+  { id:'a2', label:'🍌 Ăn chiều 16:00 (gà/cá + chuối)' },
+  { id:'a3', label:'🟠 Uống L-Carnitine lúc 16:00' },
+  { id:'a4', label:'🍴 Ăn tối 18:30 (gà/cá + bông cải) – không tinh bột' },
+];
+const CHECKLIST_WORKOUT = [
+  { id:'w1', label:'🏋️ Hoàn thành buổi tập chiều (17:00)' },
+  { id:'w2', label:'💧 Uống đủ 4.5L nước hôm nay' },
+  { id:'w3', label:'😴 Đi ngủ trước 23:00' },
+];
+const QUOTES = [
+  '"Không có thay đổi nào xảy ra trong vùng thoải mái."',
+  '"Mỗi ngày bạn luyện tập là ngày bạn gần hơn với phiên bản tốt hơn của mình."',
+  '"Cơ thể đạt được điều mà tâm trí tin tưởng."',
+  '"Đừng ước mình có thân hình đẹp – hãy làm việc để có nó."',
+  '"Khó khăn hôm nay chính là sức mạnh của ngày mai."',
+  '"Một năm nữa bạn sẽ ước mình bắt đầu từ hôm nay."',
+  '"Kỷ luật là chiếc cầu nối giữa mục tiêu và thành tựu."',
+  '"Bạn không cần phải giỏi để bắt đầu, nhưng phải bắt đầu để giỏi."',
+  '"Thân hình mơ ước không được tạo ra trong phòng gym – nó được tạo ra trong bếp và trong giường ngủ."',
+  '"103kg hôm nay, 85kg sau 4 tháng. Mỗi ngày là một bước tiến."',
+];
+let quoteIdx = 0;
+
+function getData(k, def) {
+  try { const v = localStorage.getItem(k); return v !== null ? JSON.parse(v) : def; } catch { return def; }
+}
+function setData(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+
+function todayStr() {
+  const d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function fmtDate(str) {
+  const d = new Date(str+'T00:00:00');
+  return d.toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric'});
+}
+
+// ===== PAGES =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach((b,i) => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const pages = ['tong-quan','hang-ngay','can-nang','lich-tap','dinh-duong','dong-luc'];
+  const idx = pages.indexOf(id);
+  document.querySelectorAll('nav button')[idx].classList.add('active');
+  if(id==='tong-quan') updateOverview();
+  if(id==='hang-ngay') initHangNgay();
+  if(id==='can-nang') renderWeightPage();
+  if(id==='dong-luc') updateMotivation();
+}
+
+// ===== OVERVIEW =====
+function saveCampaign() {
+  const date = document.getElementById('start-date-input').value;
+  const weight = parseFloat(document.getElementById('start-weight-input').value);
+  if(date) setData('start_date', date);
+  if(weight && weight>0) setData('start_weight', weight);
+  showToast('Đã lưu cài đặt!');
+  updateOverview();
+}
+
+function updateOverview() {
+  const startDate = getData('start_date', null);
+  const startWeight = getData('start_weight', 103);
+  const weights = getData('weights', []);
+
+  if(startDate) {
+    document.getElementById('hero-date').textContent = 'Ngày bắt đầu: ' + fmtDate(startDate);
+    document.getElementById('start-date-input').value = startDate;
+    const elapsed = Math.floor((new Date() - new Date(startDate+'T00:00:00'))/(1000*60*60*24));
+    const pct = Math.min(100, Math.max(0, Math.round(elapsed/TOTAL_DAYS*100)));
+    document.getElementById('time-bar').style.width = pct+'%';
+    document.getElementById('time-pct').textContent = pct+'%';
+    document.getElementById('stat-days-left').textContent = Math.max(0, TOTAL_DAYS - elapsed);
+  }
+
+  if(startWeight) document.getElementById('start-weight-input').value = startWeight;
+
+  const currentW = weights.length ? weights[weights.length-1].w : null;
+  document.getElementById('stat-current').textContent = currentW ? currentW.toFixed(1) : '—';
+  const lost = currentW ? (startWeight - currentW).toFixed(1) : '—';
+  document.getElementById('stat-lost').textContent = lost > 0 ? '-'+lost : lost;
+
+  // streak
+  const allDays = getData('daily_checks', {});
+  let streak = 0;
+  const today = new Date();
+  for(let i=0;i<120;i++) {
+    const d = new Date(today); d.setDate(d.getDate()-i);
+    const ds = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    const checks = allDays[ds] || {};
+    const all = [...CHECKLIST_MORNING,...CHECKLIST_AFTERNOON,...CHECKLIST_WORKOUT];
+    const done = all.filter(c=>checks[c.id]).length;
+    if(done === all.length && all.length > 0) streak++;
+    else if(i>0) break;
+  }
+  document.getElementById('stat-streak').textContent = streak;
+
+  // mini chart
+  drawChart('weightChart', weights, startWeight);
+}
+
+function drawChart(canvasId, weights, startWeight) {
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.offsetWidth || 300;
+  canvas.width = W; canvas.height = parseInt(canvas.getAttribute('height'))||140;
+  const H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = '#1e2330'; ctx.fillRect(0,0,W,H);
+
+  const data = [{date:'start', w: startWeight}, ...weights];
+  if(data.length < 2) {
+    ctx.fillStyle = '#7a8399'; ctx.textAlign='center'; ctx.font='13px Be Vietnam Pro';
+    ctx.fillText('Chưa đủ dữ liệu để vẽ biểu đồ', W/2, H/2); return;
+  }
+  const vals = data.map(d=>d.w);
+  const minV = Math.min(...vals)-2, maxV = Math.max(...vals)+2;
+  const pad = {t:20,b:30,l:40,r:16};
+  const cw = W-pad.l-pad.r, ch = H-pad.t-pad.b;
+
+  // grid
+  ctx.strokeStyle='#2a3044'; ctx.lineWidth=1;
+  for(let i=0;i<=4;i++) {
+    const y = pad.t + (ch/4)*i;
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(W-pad.r,y); ctx.stroke();
+    const v = maxV - ((maxV-minV)/4)*i;
+    ctx.fillStyle='#7a8399'; ctx.font='10px Be Vietnam Pro'; ctx.textAlign='right';
+    ctx.fillText(v.toFixed(0), pad.l-4, y+3);
+  }
+
+  // goal line (90kg)
+  const goalY = pad.t + ch*(1-(90-minV)/(maxV-minV));
+  if(goalY > pad.t && goalY < pad.t+ch) {
+    ctx.strokeStyle='rgba(59,130,246,0.4)'; ctx.setLineDash([4,4]); ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(pad.l,goalY); ctx.lineTo(W-pad.r,goalY); ctx.stroke();
+    ctx.setLineDash([]); ctx.fillStyle='#3b82f6'; ctx.font='10px Be Vietnam Pro'; ctx.textAlign='left';
+    ctx.fillText('MỤC TIÊU 90kg', pad.l+4, goalY-4);
+  }
+
+  // line
+  const points = data.map((d,i)=>({
+    x: pad.l + (data.length===1?cw/2:cw*i/(data.length-1)),
+    y: pad.t + ch*(1-(d.w-minV)/(maxV-minV))
+  }));
+
+  ctx.strokeStyle='#f97316'; ctx.lineWidth=2.5; ctx.setLineDash([]);
+  ctx.beginPath();
+  points.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.stroke();
+
+  // fill
+  ctx.fillStyle='rgba(249,115,22,0.12)';
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, pad.t+ch);
+  points.forEach(p=>ctx.lineTo(p.x,p.y));
+  ctx.lineTo(points[points.length-1].x, pad.t+ch);
+  ctx.closePath(); ctx.fill();
+
+  // dots
+  points.forEach((p,i)=>{
+    ctx.beginPath(); ctx.arc(p.x,p.y,3.5,0,Math.PI*2);
+    ctx.fillStyle = i===points.length-1?'#f97316':'#fb923c';
+    ctx.fill();
+  });
+}
+
+// ===== HANG NGAY =====
+let currentDay = todayStr();
+
+function initHangNgay() {
+  currentDay = todayStr();
+  renderDayTabs();
+  renderChecklist();
+  renderWater();
+  renderSupp();
+  renderNote();
+}
+
+function renderDayTabs() {
+  const tabs = document.getElementById('day-tabs');
+  tabs.innerHTML = '';
+  const allDays = getData('daily_checks', {});
+  const days = [];
+  for(let i=6;i>=0;i--) {
+    const d = new Date(); d.setDate(d.getDate()-i);
+    days.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));
+  }
+  days.forEach(ds => {
+    const btn = document.createElement('button');
+    btn.className = 'day-tab' + (ds===currentDay?' active':'');
+    const d = new Date(ds+'T00:00:00');
+    btn.textContent = d.toLocaleDateString('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit'});
+    const checks = allDays[ds]||{};
+    const all = [...CHECKLIST_MORNING,...CHECKLIST_AFTERNOON,...CHECKLIST_WORKOUT];
+    if(all.every(c=>checks[c.id]) && all.length>0 && ds!==currentDay) btn.classList.add('done');
+    btn.onclick = () => { currentDay=ds; renderDayTabs(); renderChecklist(); renderWater(); renderSupp(); renderNote(); };
+    tabs.appendChild(btn);
+  });
+}
+
+function renderChecklist() {
+  const allDays = getData('daily_checks', {});
+  const checks = allDays[currentDay]||{};
+  ['morning','afternoon','workout'].forEach(section => {
+    const el = document.getElementById('checklist-'+section);
+    const list = section==='morning'?CHECKLIST_MORNING:section==='afternoon'?CHECKLIST_AFTERNOON:CHECKLIST_WORKOUT;
+    el.innerHTML = '';
+    list.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'check-item'+(checks[item.id]?' checked':'');
+      div.innerHTML = `<div class="box"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5L5 9L12 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="label">${item.label}</div>`;
+      div.onclick = () => toggleCheck(item.id);
+      el.appendChild(div);
+    });
+  });
+  updateCheckScore();
+}
+
+function toggleCheck(id) {
+  const allDays = getData('daily_checks', {});
+  if(!allDays[currentDay]) allDays[currentDay]={};
+  allDays[currentDay][id] = !allDays[currentDay][id];
+  setData('daily_checks', allDays);
+  renderChecklist();
+  showToast(allDays[currentDay][id]?'✓ Hoàn thành!':'Đã bỏ đánh dấu');
+}
+
+function updateCheckScore() {
+  const allDays = getData('daily_checks', {});
+  const checks = allDays[currentDay]||{};
+  const all = [...CHECKLIST_MORNING,...CHECKLIST_AFTERNOON,...CHECKLIST_WORKOUT];
+  const done = all.filter(c=>checks[c.id]).length;
+  document.getElementById('checklist-score').textContent = `${done} / ${all.length} hoàn thành`;
+}
+
+function resetChecklist() {
+  const allDays = getData('daily_checks', {});
+  allDays[currentDay] = {};
+  setData('daily_checks', allDays);
+  renderChecklist();
+  renderDayTabs();
+  showToast('Đã reset ngày này');
+}
+
+function renderWater() {
+  const waterData = getData('water', {});
+  const cups = waterData[currentDay]||0;
+  const container = document.getElementById('water-cups');
+  container.innerHTML='';
+  for(let i=0;i<9;i++) {
+    const c = document.createElement('div');
+    c.className='water-cup'+(i<cups?' filled':'');
+    c.textContent='💧';
+    c.onclick=()=>toggleWater(i);
+    container.appendChild(c);
+  }
+  document.getElementById('water-label').textContent = `${cups} / 9 ly (500ml/ly) = ${(cups*0.5).toFixed(1)}L / 4.5L`;
+}
+
+function toggleWater(idx) {
+  const waterData = getData('water', {});
+  const cups = waterData[currentDay]||0;
+  waterData[currentDay] = (idx < cups) ? idx : idx+1;
+  setData('water', waterData);
+  renderWater();
+}
+
+function renderSupp() {
+  const suppData = getData('supp', {});
+  const today = suppData[currentDay]||{};
+  document.querySelectorAll('.supp-pill').forEach(pill => {
+    const key = pill.getAttribute('onclick').match(/'([^']+)'/)?.[1];
+    pill.classList.toggle('taken', !!today[key]);
+  });
+}
+
+function toggleSupp(el, key) {
+  const suppData = getData('supp', {});
+  if(!suppData[currentDay]) suppData[currentDay]={};
+  suppData[currentDay][key] = !suppData[currentDay][key];
+  setData('supp', suppData);
+  el.classList.toggle('taken', suppData[currentDay][key]);
+  showToast(suppData[currentDay][key]?'✓ Đã uống!':'Bỏ đánh dấu');
+}
+
+function saveNote() {
+  const notes = getData('daily_notes', {});
+  notes[currentDay] = document.getElementById('daily-note').value;
+  setData('daily_notes', notes);
+}
+
+function renderNote() {
+  const notes = getData('daily_notes', {});
+  document.getElementById('daily-note').value = notes[currentDay]||'';
+}
+
+// ===== WEIGHT =====
+function logWeight() {
+  const inp = document.getElementById('weight-input');
+  const w = parseFloat(inp.value);
+  if(!w||w<30||w>300) { showToast('Nhập cân nặng hợp lệ!'); return; }
+  const weights = getData('weights', []);
+  const today = todayStr();
+  const existing = weights.findIndex(x=>x.date===today);
+  if(existing>=0) weights[existing].w = w;
+  else weights.push({date:today, w});
+  weights.sort((a,b)=>a.date.localeCompare(b.date));
+  setData('weights', weights);
+  inp.value='';
+  renderWeightPage();
+  updateOverview();
+  showToast('Đã ghi cân nặng!');
+}
+
+function renderWeightPage() {
+  const weights = getData('weights', []);
+  const startWeight = getData('start_weight', 103);
+
+  const canvas = document.getElementById('weightChart2');
+  if(canvas) { canvas.width = canvas.offsetWidth||300; drawChart('weightChart2', weights, startWeight); }
+
+  const list = document.getElementById('weight-list');
+  if(!weights.length) { list.innerHTML='<div class="empty-msg">Chưa có dữ liệu. Hãy nhập cân nặng đầu tiên!</div>'; return; }
+  list.innerHTML='';
+  [...weights].reverse().forEach((item, i, arr) => {
+    const prev = arr[i+1];
+    const diff = prev ? (item.w - prev.w) : (item.w - startWeight);
+    const div = document.createElement('div');
+    div.className='weight-item';
+    div.innerHTML = `
+      <div>
+        <div style="font-weight:600">${item.w.toFixed(1)} kg</div>
+        <div style="font-size:11px;color:var(--muted)">${fmtDate(item.date)}</div>
+      </div>
+      <div class="diff ${diff<0?'neg':diff>0?'pos':''}">${diff===0?'±0':diff<0?diff.toFixed(1):'+'+diff.toFixed(1)} kg</div>
+    `;
+    list.appendChild(div);
+  });
+}
+
+// ===== MOTIVATION =====
+function nextQuote() {
+  quoteIdx = (quoteIdx+1)%QUOTES.length;
+  document.getElementById('daily-quote').textContent = QUOTES[quoteIdx];
+}
+
+function updateMotivation() {
+  quoteIdx = new Date().getDay() % QUOTES.length;
+  document.getElementById('daily-quote').textContent = QUOTES[quoteIdx];
+
+  const startDate = getData('start_date', null);
+  let elapsed = 0;
+  if(startDate) elapsed = Math.max(0, Math.floor((new Date()-new Date(startDate+'T00:00:00'))/(1000*60*60*24)));
+  document.getElementById('mot-total-days').textContent = elapsed;
+
+  const allDays = getData('daily_checks', {});
+  const all = [...CHECKLIST_MORNING,...CHECKLIST_AFTERNOON,...CHECKLIST_WORKOUT];
+  let completed = 0;
+  Object.values(allDays).forEach(checks => {
+    if(all.every(c=>checks[c.id])) completed++;
+  });
+  document.getElementById('mot-complete-days').textContent = completed;
+  document.getElementById('mot-rate').textContent = elapsed>0 ? Math.round(completed/elapsed*100)+'%' : '0%';
+
+  const gnote = getData('global_note','');
+  document.getElementById('global-note').value = gnote;
+}
+
+function saveGlobalNote() {
+  setData('global_note', document.getElementById('global-note').value);
+}
+
+// ===== TOAST =====
+let toastTimeout;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(()=>t.classList.remove('show'), 2000);
+}
+
+// ===== INIT =====
+window.onload = () => {
+  updateOverview();
+  setTimeout(()=>{ drawChart('weightChart', getData('weights',[]), getData('start_weight',103)); },100);
+};
+window.addEventListener('resize', ()=>{
+  updateOverview();
+  if(document.getElementById('can-nang').classList.contains('active')) renderWeightPage();
+});
+</script>
 </body>
 </html>
